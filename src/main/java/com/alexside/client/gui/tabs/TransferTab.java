@@ -58,8 +58,9 @@ public class TransferTab extends Tab {
         root.addRow(1, new Label("Счет списания"), senderFld);
         root.addRow(2, new Label("Счет зачисления"), recipientFld);
         root.addRow(3, new Label("Сумма"), amountFld);
-        root.addRow(4, transferBtn);
-        root.addRow(5, new Label("Статус"), statusLbl);
+        root.addRow(4, new Label("Дополнительно"), descriptionTa);
+        root.addRow(5, transferBtn);
+        root.addRow(6, new Label("Статус"), statusLbl);
         setContent(root);
     }
 }
