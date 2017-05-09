@@ -74,8 +74,8 @@ public class BankService {
         if (!isEmpty(host)) {
             String response = restTemplate.postForObject(host + "/operation/transfer", transfer, String.class);
             if (response != null) {
-                ResponseEntity<Boolean> result = gson.fromJson(response, ResponseEntity.class);
-                return result.getBody();
+                Boolean result = gson.fromJson(response, Boolean.class);
+                return result != null && result;
             }
         }
         return false;
