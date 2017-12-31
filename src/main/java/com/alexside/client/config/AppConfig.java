@@ -3,13 +3,13 @@ package com.alexside.client.config;
 import com.alexside.client.event.AccountSearchEvent;
 import com.alexside.client.event.OperationSearchEvent;
 import com.alexside.client.gui.components.AccountSearch;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.function.Consumer;
 
@@ -25,11 +25,6 @@ public class AppConfig {
 
     @Autowired
     private ApplicationEventPublisher eventPublisher;
-
-    @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
 
     @Bean
     @Scope(SCOPE_PROTOTYPE)
@@ -51,5 +46,11 @@ public class AppConfig {
         };
         AccountSearch accountSearch = new AccountSearch(callback);
         return accountSearch;
+    }
+
+    @Bean
+    @Scope(SCOPE_PROTOTYPE)
+    public Gson gsonBean() {
+        return new Gson();
     }
 }
